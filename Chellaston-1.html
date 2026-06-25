@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chellaston</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f7f7f7;text-align:center;padding:20px}
+.container{max-width:700px;margin:auto;background:white;padding:25px;border-radius:15px;box-shadow:0 0 10px rgba(0,0,0,.1)}
+.heart{font-size:60px;animation:pulse 1.2s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+button{padding:10px 16px;margin:6px;border:none;border-radius:8px;cursor:pointer}
+#reason,#question,#dare{margin-top:15px;font-size:20px;min-height:50px}
+.footer{margin-top:30px;font-style:italic}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="heart">❤</div>
+<h1>Chellaston</h1>
+<p>A small game made by Darlo.</p>
+
+<h2>Reasons</h2>
+<button onclick="showReason()">Show Reason</button>
+<div id="reason">Click the button</div>
+
+<h2>Question Game</h2>
+<button onclick="nextQuestion()">Next Question</button>
+<div id="question">Press Next Question to begin</div>
+<div id="counter"></div>
+
+<h2>Dare Mode</h2>
+<button onclick="showDare()">Give Me a Dare</button>
+<div id="dare">Ready?</div>
+
+<div class="footer">
+Love always,<br>
+Darlo
+</div>
+
+<p style="font-size:12px;color:gray">Designed and coded by Darlo</p>
+</div>
+
+<script>
+const reasons=[
+"Your smile brightens my day.","You inspire me.","You make ordinary moments special.",
+"You are hardworking.","You are kind.","You understand me.",
+"I enjoy talking to you.","You make me happy."
+];
+
+function showReason(){
+document.getElementById("reason").innerText=reasons[Math.floor(Math.random()*reasons.length)];
+}
+
+const questions=[
+"What was your first impression of me?",
+"When did you start liking me?",
+"What is your favorite memory of us?",
+"What makes you smile about me?",
+"What song reminds you of me?",
+"What nickname would you give me?",
+"What is my cutest habit?",
+"What do you appreciate most about me?",
+"What am I really good at?",
+"What is something we should do together?",
+"Where would our dream date be?",
+"What color suits me best?",
+"What is your favorite photo of me?",
+"What food describes my personality?",
+"What would you like to know more about me?",
+"What is the funniest thing I've said?",
+"What reminds you of me every day?",
+"If I were a movie character who would I be?",
+"What is your favorite thing about my personality?",
+"What is your favorite thing about my appearance?",
+"What would we do with a free day together?",
+"Where should we travel together?",
+"What is something you've never told me?",
+"What was your favorite conversation with me?",
+"What makes us a good match?",
+"What should I never stop doing?",
+"What emoji describes me best?",
+"What moment would you relive with me?",
+"What do you hope we're doing next year?",
+"What message would you leave for future us?"
+];
+
+let used=[];
+function nextQuestion(){
+if(used.length===questions.length){
+document.getElementById("question").innerText="All questions completed.";
+return;
+}
+let i;
+do{i=Math.floor(Math.random()*questions.length)}while(used.includes(i));
+used.push(i);
+document.getElementById("question").innerText=questions[i];
+document.getElementById("counter").innerText=used.length+" / "+questions.length;
+}
+
+const dares=[
+"Send your cutest selfie.",
+"Describe me in 3 words.",
+"Tell me your favorite thing about me.",
+"Send a voice note.",
+"Tell me a secret.",
+"Rate our chemistry out of 10.",
+"What made you smile today?",
+"Share an embarrassing story.",
+"Give me a nickname.",
+"Plan our dream date.",
+"Tell me what you first noticed about me.",
+"Send a picture of something that reminds you of me.",
+"Tell me one thing you miss about me.",
+"Finish the sentence: Darlo is...",
+"Tell me your favorite memory of us."
+];
+
+function showDare(){
+document.getElementById("dare").innerText=dares[Math.floor(Math.random()*dares.length)];
+}
+</script>
+</body>
+</html>
